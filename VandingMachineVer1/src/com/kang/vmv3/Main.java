@@ -1,4 +1,4 @@
-package com.kang.vmv2;
+package com.kang.vmv3;
 
 public class Main {
 	public static void main(String[] args) {
