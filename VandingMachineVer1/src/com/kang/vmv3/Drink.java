@@ -25,6 +25,10 @@ public class Drink {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+	
+	public void plusStock() {
+		stock++;
+	}
 
 	@Override
 	public String toString() {

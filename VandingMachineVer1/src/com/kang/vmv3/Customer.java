@@ -8,13 +8,13 @@ public class Customer {
 	private List<Drink> drinks = new ArrayList();
 	private String name;
 	private int money;
-	
-	public Customer (String name, int money) {
+
+	public Customer(String name, int money) {
 		init();
 		this.name = name;
 		this.money = money;
 	}
-	
+
 	private void init() {
 		drinks.add(new Drink("콜라", 1000));
 		drinks.add(new Drink("사이다", 1100));
@@ -22,16 +22,41 @@ public class Customer {
 		drinks.add(new Drink("2%", 1300));
 		drinks.add(new Drink("마운틴듀", 1400));
 	}
-	
-	public void puchase(int idx) {
-		
+
+	public void purchase(int idx) {
+		addStock(idx);
+		payMoney(idx);
 	}
 	
-	public String getName () {
-		return this.name;
+	//재고 1씩 올리기
+	public void addStock(int idx) {
+		Drink stock = drinks.get(idx-1);
+		stock.setStock(stock.getStock() + 1);
 	}
 	
-	public int getmoney () {
+	//금액사용
+	public void payMoney(int idx) {
+		this.money -= idx;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+	
+	public int getMoney() {
 		return this.money;
+	}
+	
+	public void showCustomer() {
+		for (int i = 0; i < drinks.size(); i++) {
+			Drink d = drinks.get(i);
+			System.out.println((i + 1) + "." + d.getPName() + " : " + d.getPrice() + " - (재고 : " + d.getStock() + ")");
+		}
+		System.out.printf("--------------------\n");
+	}
+	
+	@Override
+	public String toString() {
+		return name + ", " + money;
 	}
 }
