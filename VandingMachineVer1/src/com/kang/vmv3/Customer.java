@@ -36,7 +36,8 @@ public class Customer {
 	
 	//금액사용
 	public void payMoney(int idx) {
-		this.money -= idx;
+		Drink d = drinks.get(idx - 1);
+		this.money -= d.getPrice();
 	}
 
 	public void setMoney(int money) {
@@ -48,11 +49,12 @@ public class Customer {
 	}
 	
 	public void showCustomer() {
+		System.out.println("--" + name + "님의 재고상태--");
 		for (int i = 0; i < drinks.size(); i++) {
 			Drink d = drinks.get(i);
 			System.out.println((i + 1) + "." + d.getPName() + " : " + d.getPrice() + " - (재고 : " + d.getStock() + ")");
 		}
-		System.out.printf("--------------------\n");
+		System.out.println("Money : " + money);
 	}
 	
 	@Override

@@ -17,14 +17,20 @@ public class Main {
 		System.out.println(cust);
 		
 		vm.showDrinks();
+		while(true) {
+			System.out.print("번호를 입력해 주세요 : ");
+			int idx = scan.nextInt();
 			
-		System.out.print("번호를 입력해 주세요 : ");
-		int idx = scan.nextInt();
-		
-		cust.purchase(idx);
-		cust.showCustomer();
-		
-		scan.close();
-		
+			if(idx == 0) {
+				System.out.print("---자판기 게임 종료---\n");
+				scan.close();
+				break;
+			}
+			vm.sales(idx, cust);
+			
+			cust.purchase(idx);
+			cust.showCustomer();
+		}
+		vm.showDrinks();
 	}
 }
